@@ -25,6 +25,7 @@
                 </Menu>
               </menus>
             </MenuBar>
-         </children></VBox>
+         </children>
+      </VBox>
    </content>
 </ScrollPane>
