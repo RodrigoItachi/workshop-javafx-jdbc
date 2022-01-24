@@ -63,6 +63,7 @@ public class DepartmentListController implements Initializable {
 
 		Stage stage = (Stage) Main.getMainScene().getWindow();
 		tableViewDepartment.prefHeightProperty().bind(stage.heightProperty());
+//		tableViewDepartment.prefWidthProperty().bind(stage.widthProperty());
 //		tableViewDepartment.prefHeightProperty().bin;
 	}
 
