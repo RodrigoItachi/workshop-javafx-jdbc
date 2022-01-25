@@ -39,13 +39,21 @@ public class MainViewController implements Initializable {
 		loadView("/gui/DepartmentList.fxml", (DepartmentListController controller) -> {
 			controller.setDepartmentService(new DepartmentService());
 			controller.updateTableView();
+<<<<<<< HEAD
 		});
+=======
+		}); 
+>>>>>>> 033341d0fa9cbf2e9ab2708c1c2e81e24d976822
 	}
 
 	@FXML
 	public void onMenuAboutAction() {
+<<<<<<< HEAD
 		loadView("/gui/About.fxml", x -> {
 		});
+=======
+		loadView("/gui/About.fxml", x -> {});
+>>>>>>> 033341d0fa9cbf2e9ab2708c1c2e81e24d976822
 	}
 
 	@Override
@@ -65,6 +73,12 @@ public class MainViewController implements Initializable {
 			mainVBox.getChildren().clear();
 			mainVBox.getChildren().add(mainMenu);
 			mainVBox.getChildren().addAll(newVBox.getChildren());
+<<<<<<< HEAD
+=======
+
+			T controller = loader.getController();
+			initializingAction.accept(controller);
+>>>>>>> 033341d0fa9cbf2e9ab2708c1c2e81e24d976822
 			
 			T controller = loader.getController();
 			initializingAction.accept(controller);
@@ -73,4 +87,5 @@ public class MainViewController implements Initializable {
 			Alerts.showAlerts("IO Exception", "Error loanding view", e.getMessage(), AlertType.ERROR);
 		}
 	}
+
 }
