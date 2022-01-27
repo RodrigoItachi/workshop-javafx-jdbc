@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 import application.Main;
 import gui.util.Alerts;
+import gui.util.Utils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -28,7 +29,7 @@ import model.services.DepartmentService;
 public class DepartmentListController implements Initializable {
 
 	private DepartmentService departmentService;
-
+	private Department department;
 	@FXML
 	private TableView<Department> tableViewDepartment;
 
@@ -45,12 +46,17 @@ public class DepartmentListController implements Initializable {
 
 	public void onBtNewDepartmentAction(ActionEvent event) {
 		Stage parentStage = Utils.currentStage(event);
-		createDialogForm("/gui/DepartmentForm.fxml", parentStage);
+		Department department = new Department();
+		createDialogForm(department, "/gui/DepartmentForm.fxml", parentStage);
 	}
 
 	@Override
 	public void initialize(URL uri, ResourceBundle rb) {
 		initilizeNodes();
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
 	}
 
 	public void setDepartmentService(DepartmentService departmentService) {
@@ -76,10 +82,16 @@ public class DepartmentListController implements Initializable {
 //		tableViewDepartment.prefHeightProperty().bin;
 	}
 
-	private void createDialogForm(String absoluteName, Stage parentStage) {
+	private void createDialogForm(Department department ,String absoluteName, Stage parentStage) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName));
 			Pane pane = loader.load();
+			
+			DepartmentFormController controller = loader.getController();
+			controller.setEntityDepartment(department);
+			controller.setDepartmentService(new DepartmentService());
+			controller.updateFormData();
+			
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Enter department data");
 			dialogStage.setScene(new Scene(pane));
