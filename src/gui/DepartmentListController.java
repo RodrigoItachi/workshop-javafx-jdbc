@@ -30,7 +30,7 @@ import model.services.DepartmentService;
 public class DepartmentListController implements Initializable, DataChangeListener {
 
 	private DepartmentService departmentService;
-	private Department department;
+
 	@FXML
 	private TableView<Department> tableViewDepartment;
 
@@ -54,10 +54,6 @@ public class DepartmentListController implements Initializable, DataChangeListen
 	@Override
 	public void initialize(URL uri, ResourceBundle rb) {
 		initilizeNodes();
-	}
-
-	public void setDepartment(Department department) {
-		this.department = department;
 	}
 
 	public void setDepartmentService(DepartmentService departmentService) {
