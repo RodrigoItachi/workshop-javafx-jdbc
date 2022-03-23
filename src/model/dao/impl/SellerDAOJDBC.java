@@ -181,7 +181,7 @@ public class SellerDAOJDBC implements SellerDao {
 		seller.setId(resultSet.getInt("id"));
 		seller.setName(resultSet.getString("name"));
 		seller.setEmail(resultSet.getString("email"));
-		seller.setBirthDate(resultSet.getDate("birthDate"));
+		seller.setBirthDate(new java.util.Date(resultSet.getTimestamp("birthDate").getTime()));
 		seller.setBaseSalary(resultSet.getDouble("baseSalary"));
 		seller.setDepartment(department);
 		return seller;
